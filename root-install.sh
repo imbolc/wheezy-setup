@@ -63,7 +63,7 @@ aptitude install -y postgresql-server-dev-all libmysqld-dev libmemcached-dev
 aptitude install -y libtokyocabinet-dbg libtokyocabinet-dev libtokyocabinet9
 aptitude install -y libevent-dev
 
-aptitude install -y cron htop screen mc sudo apache2-utils gcc
+aptitude install -y cron htop screen mc sudo apache2-utils gcc rsync
 aptitude install -y nginx runit
 
 aptitude install -y python python-setuptools python-dev

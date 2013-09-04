@@ -14,6 +14,7 @@ deb-src http://cdn.debian.net/debian/ wheezy-updates main contrib non-free
 
 deb http://cdn.debian.net/debian/ wheezy-backports main
 
+deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main 9.3
 deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen
 EOF
 
@@ -23,6 +24,8 @@ aptitude update && upgrade
 echo "Setup aptitude security keys for extra repositories"
 # mongodb
 apt-key adv --keyserver subkeys.pgp.net --recv 9ECBEC467F0CEB10
+# postgres
+wget -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
 
 echo "=== LOCALES"
@@ -59,7 +62,7 @@ echo "=== INSTALL PACKAGES"
 aptitude install -y libxml2-dev libxslt1-dev
 aptitude install -y libcurl4-openssl-dev
 aptitude install -y libjpeg62-dev libfreetype6-dev
-aptitude install -y postgresql-server-dev-all libmysqld-dev libmemcached-dev
+aptitude install -y postgresql-server-dev-9.3 libmysqld-dev libmemcached-dev
 aptitude install -y libtokyocabinet-dbg libtokyocabinet-dev libtokyocabinet9
 aptitude install -y libevent-dev
 

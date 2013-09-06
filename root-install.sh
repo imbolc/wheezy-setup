@@ -16,6 +16,10 @@ deb http://cdn.debian.net/debian/ wheezy-backports main
 
 deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main 9.3
 deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen
+
+# for nginx 1.4 (with websockets support)
+deb http://packages.dotdeb.org wheezy all
+deb-src http://packages.dotdeb.org wheezy all
 EOF
 
 echo "aptitude update"
@@ -26,6 +30,8 @@ echo "Setup aptitude security keys for extra repositories"
 apt-key adv --keyserver subkeys.pgp.net --recv 9ECBEC467F0CEB10
 # postgres
 wget -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+# dotdeb
+wget -O - http://www.dotdeb.org/dotdeb.gpg | sudo apt-key add -
 
 
 echo "=== LOCALES"

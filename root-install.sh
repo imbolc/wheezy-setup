@@ -12,18 +12,26 @@ deb-src http://security.debian.org/ wheezy/updates main contrib non-free
 deb http://cdn.debian.net/debian/ wheezy-updates main contrib non-free
 deb-src http://cdn.debian.net/debian/ wheezy-updates main contrib non-free
 
-deb http://cdn.debian.net/debian/ wheezy-backports main
+deb http://cdn.debian.net/debian/ wheezy-backports main contrib non-free
 
+# postgres
 deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main 9.3
+
+# mongodb
 deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen
 
-# for nginx 1.4 (with websockets support)
+# nginx 1.4 (with websockets support)
 deb http://packages.dotdeb.org wheezy all
 deb-src http://packages.dotdeb.org wheezy all
-EOF
 
-echo "aptitude update"
-aptitude update && upgrade
+# node.js
+deb http://ppa.launchpad.net/chris-lea/node.js/ubuntu lucid main
+deb-src http://ppa.launchpad.net/chris-lea/node.js/ubuntu lucid main
+
+# redis
+deb http://ppa.launchpad.net/chris-lea/redis-server/ubuntu lucid main
+deb-src http://ppa.launchpad.net/chris-lea/redis-server/ubuntu lucid main
+EOF
 
 echo "Setup aptitude security keys for extra repositories"
 # mongodb
@@ -33,6 +41,9 @@ wget -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add 
 # dotdeb
 wget -O - http://www.dotdeb.org/dotdeb.gpg | sudo apt-key add -
 
+
+echo "aptitude update"
+aptitude update && upgrade
 
 echo "=== LOCALES"
 aptitude install -y locales 

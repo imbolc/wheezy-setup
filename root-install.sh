@@ -40,6 +40,10 @@ apt-key adv --keyserver subkeys.pgp.net --recv 9ECBEC467F0CEB10
 wget -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 # dotdeb
 wget -O - http://www.dotdeb.org/dotdeb.gpg | sudo apt-key add -
+# ppa
+KEY=<номер_ключа>; sudo gpg --recv-key --keyserver subkeys.pgp.net $KEY && sudo gpg --export $KEY | sudo apt-key add -
+apt-key adv --keyserver subkeys.pgp.net --recv B9316A7BC7917B12
+
 
 
 echo "aptitude update"
